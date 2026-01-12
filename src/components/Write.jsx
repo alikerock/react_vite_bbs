@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Write({ isModifyMode, boardId, onResetModify }) {
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   let navigate = useNavigate();
   const [form, setForm] = useState({
     writer: '',
@@ -35,7 +36,7 @@ export default function Write({ isModifyMode, boardId, onResetModify }) {
     }
 
     // console.log(formData.get("image")); 
-    Axios.post('http://localhost:8000/insert', formData, {headers:{"Content-Type":"multipart/form-data"}})
+    Axios.post(`${API_BASE}/insert`, formData, {headers:{"Content-Type":"multipart/form-data"}})
       .then((response) => {
         console.log(response);
         navigate("/");
@@ -47,7 +48,7 @@ export default function Write({ isModifyMode, boardId, onResetModify }) {
   const update = (e) => {
     e.preventDefault();
 
-    Axios.post('http://localhost:8000/update', {
+    Axios.post(`${API_BASE}/update`, {
       id:boardId,
       writer: form.writer,
       title: form.title,

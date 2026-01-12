@@ -8,9 +8,10 @@ export default function View({onStartModify}){
   const [data, setData] = useState(null);
   const {id} = useParams();
   let navigate = useNavigate();
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const getData = useCallback(() => {
-    Axios.get(`http://localhost:8000/detail?id=${id}`)
+    Axios.get(`${API_BASE}/detail?id=${id}`)
       .then(response => {        
         const {data} = response;
         console.log(data);
@@ -51,7 +52,7 @@ export default function View({onStartModify}){
           <div>
             <img 
               style={{width:'100%'}}
-              src={`http://localhost:8000/${data.image_path}`} 
+              src={`${API_BASE}/${data.image_path}`} 
               alt=""
             />
           </div>
