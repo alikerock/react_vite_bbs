@@ -71,7 +71,7 @@ export default function BoardList() {
 
     let boardIdList = checkList.join();
 
-    Axios.post('http://localhost:8000/delete', {
+    Axios.post(`${API_BASE}/delete`, {
       boardIdList
     })
     .then(() => {

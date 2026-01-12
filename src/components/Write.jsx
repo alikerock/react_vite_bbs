@@ -66,7 +66,7 @@ export default function Write({ isModifyMode, boardId, onResetModify }) {
   useEffect(() => {
     if (!boardId) return;
     if (!isModifyMode) return;
-    Axios.get(`http://localhost:8000/detail?id=${boardId}`)
+    Axios.get(`${API_BASE}/detail?id=${boardId}`)
       .then(response => {
         const { data } = response;
         console.log(data);
